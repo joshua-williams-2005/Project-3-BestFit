@@ -5,13 +5,11 @@ using namespace std;
 
 class Grid {
 private:
-    int rows;
-    int columns;
+    int size;
     vector<Bin> bins;
 
 public:
     Grid();
-    Grid(int width, int height);
     void firstFit();
     void bestFit();
     void printGrid();
