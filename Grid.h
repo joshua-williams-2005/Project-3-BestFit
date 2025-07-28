@@ -8,6 +8,7 @@ private:
 public:
     Grid();
     Grid(int width, int height);
-
+    void firstFit();
+    void bestFit();
     void printGrid();
 };

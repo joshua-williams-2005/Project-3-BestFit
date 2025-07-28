@@ -16,3 +16,11 @@ void Grid::printGrid(){
   cout << "Grid Width: " << width << endl;
   cout << "Grid Height: " << height << endl;
 }
+
+void Grid::firstFit() {
+    cout << "First Fit" << endl;
+}
+
+void Grid::bestFit() {
+    cout << "Best Fit" << endl;
+}
