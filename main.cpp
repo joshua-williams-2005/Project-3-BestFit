@@ -5,8 +5,6 @@
 
 int main() {
     std::string userInput;
-    //testing testing - Ben
-    //hi this is alex
     while (userInput != "5") {
         std::getline(std::cin, userInput);
         if (userInput == "1") {
