@@ -2,16 +2,15 @@
 #include <iostream>
 using namespace std;
 
-Grid::Grid(){
+Grid::Grid() {
     this->numBins = 100;
-    for (int i = 0; i < 100; i++){
+    for (int i = 0; i < 100; i++) {
       Bin b;
       bins.push_back(b);
     }
 }
 
-
-void Grid::printGrid(){
+void Grid::printGrid() {
   cout << "Grid Size: " << numBins << endl;
 }
 
