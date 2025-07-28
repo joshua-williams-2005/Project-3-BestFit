@@ -2,6 +2,6 @@
 #include <iostream>
 using namespace std;
 Bin::Bin(){
-    rows = 100;
-    columns = 100;
+    rows = 50;
+    columns = 50;
 }
