@@ -3,18 +3,18 @@
 using namespace std;
 
 Grid::Grid(){
-    width = 100;
-    height = 100;
+    rows = 100;
+    columns = 100;
 }
 
-Grid::Grid(int width, int height) {
-    this->width = width;
-    this->height = height;
+Grid::Grid(int rows, int columns) {
+    this->rows = rows;
+    this->columns = columns;
 }
 
 void Grid::printGrid(){
-  cout << "Grid Width: " << width << endl;
-  cout << "Grid Height: " << height << endl;
+  cout << "Grid Rows: " << rows << endl;
+  cout << "Grid Columns: " << columns << endl;
 }
 
 void Grid::firstFit() {

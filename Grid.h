@@ -2,12 +2,12 @@
 
 class Grid {
 private:
-    int width;
-    int height;
+    int rows;
+    int columns;
 
 public:
     Grid();
-    Grid(int width, int height);
+    Grid(int rows, int columns);
     void firstFit();
     void bestFit();
     void printGrid();
