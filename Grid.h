@@ -1,12 +1,1 @@
-#ifndef GRID_H
-#define GRID_H
-
-
-
-class Grid {
-
-};
-
-
-
-#endif //GRID_H
+#pragma once
