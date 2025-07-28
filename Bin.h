@@ -9,9 +9,10 @@ class Bin {
 private:
     int rows;
     int columns;
-    std::vector<std::vector<bool>> board;
-    newgrid a[50][50];
+    //std::vector<std::vector<bool>> board;
+    newgrid board[50][50];
 public:
     int capacity;
     Bin();
+    void placetherec(int width, int height, int startrows, int startcol);
 };
