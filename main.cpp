@@ -1,23 +1,33 @@
 #include "Grid.h"
 #include <iostream>
 #include <string>
-
+using namespace std;
 
 int main() {
     std::string userInput;
+    cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
+    cout << "1. Generate Rectangles" << endl;
+    cout << "2. Run First-Fit Decreasing" << endl;
+    cout << "3. Run Best-Fit Decreasing" << endl;
+    cout << "4. Show Results" << endl;
+    cout << "5. Exit" << endl;
+    cout << "Please Select a Choice Above" << endl;
     while (userInput != "5") {
         std::getline(std::cin, userInput);
         if (userInput == "1") {
-            //generate rectangles
+            cout<<"generate rectangles" << endl;
         }
         else if (userInput == "2") {
-            //first-fit
+            cout<<"first-fit" << endl;
         }
         else if (userInput == "3") {
-            //best-fit
+            cout<<"best-fit" << endl;
         }
         else if (userInput == "4") {
-            //show results
+            cout<<"show results" << endl;
+        }
+        else {
+            cout<<"Please Enter a Number between 1 and 5" << endl;
         }
     }
 }
