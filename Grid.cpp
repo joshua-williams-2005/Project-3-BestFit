@@ -4,11 +4,14 @@ using namespace std;
 
 Grid::Grid(){
     this->size = 100;
+    for (int i = 0; i < 100; i++){
+      Bin b;
+      bins.push_back(b);
+    }
 }
 
 void Grid::printGrid(){
   cout << "Grid Size: " << size << endl;
-
 }
 
 void Grid::firstFit() {
