@@ -3,8 +3,13 @@
 using namespace std;
 
 Grid::Grid(){
-    this->width = 100;
-    this->height = 100;
+    width = 100;
+    height = 100;
+}
+
+Grid::Grid(int width, int height) {
+    this->width = width;
+    this->height = height;
 }
 
 void Grid::printGrid(){

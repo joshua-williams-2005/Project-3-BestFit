@@ -7,6 +7,7 @@ private:
 
 public:
     Grid();
+    Grid(int width, int height);
+
     void printGrid();
 };
-
