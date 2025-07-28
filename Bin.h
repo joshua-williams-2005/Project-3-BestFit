@@ -2,6 +2,10 @@
 
 class Bin {
 private:
-    int capacity;
+    int width;
+    int height;
 public:
+    int capacity;
+    Bin();
+
 };
