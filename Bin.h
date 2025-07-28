@@ -1,15 +1,15 @@
 #pragma once
 
 #include <vector>
-struct newgrid {
-    bool a=false;
+struct board {
+    bool a = false;
 };
 
 class Bin {
 private:
     int rows;
     int columns;
-    newgrid a[50][50];
+    board a[50][50];
 public:
     int capacity;
     Bin();
