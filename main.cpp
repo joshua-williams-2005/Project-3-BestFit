@@ -4,6 +4,7 @@
 using namespace std;
 
 int main() {
+
     std::string userInput;
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate Rectangles" << endl;
