@@ -2,8 +2,8 @@
 
 class Bin {
 private:
-    int width;
-    int height;
+    int rows;
+    int columns;
 public:
     int capacity;
     Bin();

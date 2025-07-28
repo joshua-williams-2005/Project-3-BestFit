@@ -2,6 +2,6 @@
 #include <iostream>
 using namespace std;
 Bin::Bin(){
-    width = 100;
-    height = 100;
+    rows = 100;
+    columns = 100;
 }
