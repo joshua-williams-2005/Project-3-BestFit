@@ -19,4 +19,5 @@ public:
     void firstFit();
     void bestFit();
     void printGrid();
+    void results();
 };

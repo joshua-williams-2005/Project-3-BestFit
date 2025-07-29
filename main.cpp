@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    Grid g;
+    // Grid g;
 
     std::string userInput;
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
@@ -18,19 +18,19 @@ int main() {
         std::getline(std::cin, userInput);
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
-            //grid.createRectangles();
+            // g.createRectangles();
         }
         else if (userInput == "2") {
             cout<<"first-fit" << endl;
-            //grid.firstFit();
+            // g.firstFit();
         }
         else if (userInput == "3") {
             cout<<"best-fit" << endl;
-            //grid.bestFit();
+            // g.bestFit();
         }
         else if (userInput == "4") {
             cout<<"show results" << endl;
-            //grid.printGrid();
+            // g.results();
         }
         else if (userInput == "5") {
             cout<<"exit" << endl;

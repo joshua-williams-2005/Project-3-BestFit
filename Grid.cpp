@@ -107,3 +107,9 @@ void Grid::bestFit() {
         }
     }
 }
+
+void Grid::results() {
+  cout << "Results" << endl;
+  cout << "First Fit empty bins: " << FFspace << endl;
+  cout << "Best Fit empty bins: " << BFspace << endl;
+}
