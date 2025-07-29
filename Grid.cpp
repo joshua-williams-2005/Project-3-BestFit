@@ -56,6 +56,7 @@ void Grid::firstFit() {
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
                 b.placetherec(length,width,p1.first,p1.second);
+                b.capacity = b.capacity - (length * width);
                 break;
             }
         }
@@ -101,7 +102,7 @@ void Grid::bestFit() {
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b is empty){
+        if (b.capacity){
             BFspace++;
         }
     }

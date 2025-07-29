@@ -4,7 +4,8 @@
 using namespace std;
 
 int main() {
-    //Grid grid;
+    Grid g;
+
     std::string userInput;
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate Rectangles" << endl;
