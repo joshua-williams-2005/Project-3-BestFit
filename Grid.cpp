@@ -46,28 +46,63 @@ void Grid::firstFit() {
 
     //iterate through every rectangle
     for (int i = 0; i < 100; ++i) {
-      int length = rectangles[i].first; //length of rectangle i
-      int width = rectangles[i].second; //width of rectangle i
+        int length = rectangles[i].first; //length of rectangle i
+        int width = rectangles[i].second; //width of rectangle i
 
-      //iterate through every bin, but break once inserted
-      for (int j = 0; j < 100; ++j) {
-        Bin b = bins[j];
-        pair<int,int> p1;
-        p1=b.canFit(length,width);
-        if (p1.first!=-50||p1.second!=-50){
-          b.placetherec(length,width,p1.first,p1.second);
-          break;
+        //iterate through every bin, but break once inserted
+        for (int j = 0; j < 100; ++j) {
+            Bin b = bins[j];
+            pair<int,int> p1;
+            p1 = b.canFit(length,width);
+            if (p1.first != -50 || p1.second != -50){
+                b.placetherec(length,width,p1.first,p1.second);
+                break;
+            }
         }
-      }
     }
 
     //check for space
     for (int i = 0; i < 100; ++i) {
-      Bin b = bins[i];
-
+        Bin b = bins[i];
+        if (b is empty){
+          FFspace++;
+        }
     }
 }
 
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
+    for (int i = 0; i < 100; ++i) {
+        int length = rectangles[i].first; //length of rectangle i
+        int width = rectangles[i].second; //width of rectangle i
+
+        int min = 1000000;
+        int bestIndex = -1;
+        //check which bin has the least empty space when inserted
+        for (int j = 0; j < 100; ++j) {
+            Bin b = bins[j];
+            pair<int,int> p1;
+            p1 = b.canFit(length,width);
+            if (p1.first != -50 || p1.second != -50){
+                int space = b.capacity - (length * width);
+                if (space < min) {
+                  min = space;
+                  bestIndex = j;
+                }
+            }
+        }
+        //insert into the best fit bin and update the bin's capacity
+        Bin b = bins[bestIndex];
+        pair<int,int> p1 = b.canFit(length,width);
+        b.placetherec(length,width,p1.first,p1.second);
+        b.capacity = b.capacity - (length * width);
+    }
+
+    //check for space
+    for (int i = 0; i < 100; ++i) {
+        Bin b = bins[i];
+        if (b is empty){
+            BFspace++;
+        }
+    }
 }

@@ -7,8 +7,8 @@ using namespace std;
 
 class Grid {
 private:
-    // int FFspace;
-    // int BFspace;
+    int FFspace;
+    int BFspace;
     int numBins;
     vector<Bin> bins;
     vector<pair<int, int> > rectangles;
