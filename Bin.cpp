@@ -5,6 +5,7 @@ using namespace std;
 Bin::Bin() {
     rows = 50;
     columns = 50;
+    capacity = rows * columns;
 }
 
 bool Bin::canFit(int height, int width) {
@@ -12,7 +13,7 @@ bool Bin::canFit(int height, int width) {
         return false;
     }
 
-    for(int i = 0;i< height; ++i) {
+    for(int i = 0;i < height; ++i) {
         for (int j = 0; j < width; ++j) {
             if (a[i][j].a == true) {
                 return false;
