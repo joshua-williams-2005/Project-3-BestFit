@@ -28,7 +28,7 @@ int main() {
             cout<<"show results" << endl;
         }
         else if (userInput == "5") {
-            break;
+            cout<<"exit" << endl;
         }
         else {
             cout<<"Please Enter a Number between 1 and 5" << endl;
