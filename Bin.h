@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 struct board {
     bool a = false;
 };
