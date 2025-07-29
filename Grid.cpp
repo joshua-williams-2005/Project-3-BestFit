@@ -52,8 +52,10 @@ void Grid::firstFit() {
       //iterate through every bin, but break once inserted
       for (int j = 0; j < 100; ++j) {
         Bin b = bins[j];
-        if (b.checkInsert()==true){
-          b.placetherec();
+        pair<int,int> p1;
+        p1=b.canFit(length,width);
+        if (p1.first!=-50||p1.second!=-50){
+          b.placetherec(length,width,p1.first,p1.second);
           break;
         }
       }

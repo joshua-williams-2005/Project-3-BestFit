@@ -13,6 +13,6 @@ private:
 public:
     int capacity;
     Bin();
-    bool canFit(int height, int width);
+    std::pair<int, int> canFit(int height, int width);
     void placetherec(int width, int height, int startrows, int startcol);
 };

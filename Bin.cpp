@@ -7,24 +7,51 @@ Bin::Bin() {
     columns = 50;
 }
 
-bool Bin::canFit(int height, int width) {
-    if (height > rows || width > columns) {
-        return false;
+pair<int, int> Bin::canFit(int length, int width) {
+    if (length > rows || width > columns) {
+        return make_pair(-50,-50);
     }
-
-    for(int i = 0;i< height; ++i) {
+    const int N=50;
+    bool flag=true;
+    int over=0;
+    int newx=-50;
+    int newy=-50;
+    /*for(int i = 0;i< height; ++i) {
         for (int j = 0; j < width; ++j) {
             if (a[i][j].a == true) {
                 return false;
             }
         }
+    }*/
+    int i,j;
+    for(i=0;i<N-length;i++){
+        for(j=0;j<N-width;j++){
+            flag=true;
+            for(int k = 0;k< length; ++k) {
+                for (int l = 0; l < width; ++l) {
+                    if (a[k][l].a == true) {
+                        flag=false;
+                    }
+                }
+            }
+            if(flag==true){
+                over=1;
+                newx=i;
+                newy=j;
+                break;
+            }
+        }
+        if(over==1){
+            break;
+        }
     }
-    return true;
+
+    return make_pair(newx,newy);
 }
 
-void Bin::placetherec(int width, int height, int startrows, int startcol) {
-    for(int i=0;i<width;i++) {
-        for (int j = 0; j < height; j++)
+void Bin::placetherec(int length, int width, int startrows, int startcol) {
+    for(int i=0;i<length;i++) {
+        for (int j = 0; j < width; j++)
             a[i + startrows][j + startcol].a = true;
     }
 }
