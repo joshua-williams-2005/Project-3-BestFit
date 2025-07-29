@@ -4,6 +4,8 @@ using namespace std;
 
 Grid::Grid() {
     this->numBins = 100; //we can change later
+    //    this->FFspace = 100;
+    //    this->BFspace = 100;
     //creating 100 empty bins in the grid
     for (int i = 0; i < 100; i++) {
       Bin b;
@@ -41,6 +43,27 @@ void Grid::printGrid() {
 
 void Grid::firstFit() {
     cout << "First Fit" << endl;
+
+    //iterate through every rectangle
+    for (int i = 0; i < 100; ++i) {
+      int length = rectangles[i].first; //length of rectangle i
+      int width = rectangles[i].second; //width of rectangle i
+
+      //iterate through every bin, but break once inserted
+      for (int j = 0; j < 100; ++j) {
+        Bin b = bins[j];
+        if (b.checkInsert()==true){
+          b.placetherec();
+          break;
+        }
+      }
+    }
+
+    //check for space
+    for (int i = 0; i < 100; ++i) {
+      Bin b = bins[i];
+
+    }
 }
 
 void Grid::bestFit() {
