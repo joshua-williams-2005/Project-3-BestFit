@@ -16,12 +16,12 @@ void Grid::createRectangles(){
     mt19937 gen(rd()); // Mersenne Twister engine
     uniform_int_distribution<> dist(1, 50); // Range [1, 50], which will be always be less than bin length and width
 
-    vector<int> lengths;
+    vector<int> heights;
     vector<int> widths;
 
-    // Generate 100 random lengths
+    // Generate 100 random heights
     for (int i = 0; i < 100; ++i) {
-        lengths.push_back(dist(gen));
+        heights.push_back(dist(gen));
     }
     // Generate 100 random widths
     for (int i = 0; i < 100; ++i) {
@@ -30,7 +30,7 @@ void Grid::createRectangles(){
     //putting the 100 random rectangles into an array of pairs
     for (int i = 0; i < 100; ++i){
         pair <int, int> p;
-        p.first = lengths[i];
+        p.first = heights[i];
         p.second = widths[i];
         rectangles.push_back(p);
     }
@@ -45,17 +45,17 @@ void Grid::firstFit() {
 
     //iterate through every rectangle
     for (int i = 0; i < 100; ++i) {
-        int length = rectangles[i].first; //length of rectangle i
+        int height = rectangles[i].first; //height of rectangle i
         int width = rectangles[i].second; //width of rectangle i
 
         //iterate through every bin, but break once inserted
         for (int j = 0; j < 100; ++j) {
             Bin &b = bins[j];
             pair<int,int> p1;
-            p1 = b.canFit(length,width);
+            p1 = b.canFit(height,width);
             if (p1.first != -50 || p1.second != -50){
-                b.placeRectangle(length,width,p1.first,p1.second);
-                //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
+                b.placeRectangle(height,width,p1.first,p1.second);
+                //b.capacity = b.capacity - (height * width); i put it in the place the rec method- alex
                 break;
             }
         }
@@ -73,7 +73,7 @@ void Grid::firstFit() {
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
     for (int i = 0; i < 100; ++i) {
-        int length = rectangles[i].first; //length of rectangle i
+        int height = rectangles[i].first; //height of rectangle i
         int width = rectangles[i].second; //width of rectangle i
 
         int min = 1000000;
@@ -82,9 +82,9 @@ void Grid::bestFit() {
         for (int j = 0; j < 100; ++j) {
             Bin &b = bins[j];
             pair<int,int> p1;
-            p1 = b.canFit(length,width);
+            p1 = b.canFit(height,width);
             if (p1.first != -50 || p1.second != -50){
-                int space = b.capacity - (length * width);
+                int space = b.capacity - (height * width);
                 if (space < min) {
                   min = space;
                   bestIndex = j;
@@ -93,9 +93,9 @@ void Grid::bestFit() {
         }
         //insert into the best fit bin and update the bin's capacity
         Bin b = bins[bestIndex];
-        pair<int,int> p1 = b.canFit(length,width);
-        b.placeRectangle(length,width,p1.first,p1.second);
-        //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
+        pair<int,int> p1 = b.canFit(height,width);
+        b.placeRectangle(height,width,p1.first,p1.second);
+        //b.capacity = b.capacity - (height * width); i put it in the place the rec method- alex
     }
 
     //check for space
