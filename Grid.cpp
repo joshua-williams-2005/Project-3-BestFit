@@ -4,8 +4,9 @@ using namespace std;
 
 Grid::Grid() {
     this->numBins = 100; //we can change later
-    //    this->FFspace = 100;
-    //    this->BFspace = 100;
+    //# of empty bins after BF and FF
+    this->FFspace = 0;
+    this->BFspace = 0;
     //creating 100 empty bins in the grid
     for (int i = 0; i < 100; i++) {
       Bin b;
@@ -65,7 +66,7 @@ void Grid::firstFit() {
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b is empty){
+        if (b.capacity == 0){
           FFspace++;
         }
     }
@@ -102,14 +103,15 @@ void Grid::bestFit() {
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b.capacity){
+        if (b.capacity == 0){
             BFspace++;
         }
     }
+
 }
 
 void Grid::results() {
-  cout << "Results" << endl;
-  cout << "First Fit empty bins: " << FFspace << endl;
-  cout << "Best Fit empty bins: " << BFspace << endl;
+  cout << "RESULTS" << endl;
+  cout << "First Fit empty bins: " << FFspace << "/100000 bins remaining" << endl;
+  cout << "Best Fit empty bins: " << BFspace << "/100000 bins remaining" << endl;
 }
