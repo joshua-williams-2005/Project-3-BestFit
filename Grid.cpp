@@ -39,7 +39,18 @@ void Grid::createRectangles(){
 }
 //testing/debugging function
 void Grid::printGrid() {
-  cout << "Grid Size: " << numBins << endl;
+
+}
+void Grid::printRectangles() {
+  for (int i = 0; i < rectangles.size(); ++i) {
+    cout << rectangles[i].first << " " << rectangles[i].second << endl;
+  }
+}
+void Grid::printBins(){
+    for (int i = 0; i < bins.size(); ++i){
+        Bin b = bins[i];
+        b.printBin();
+    }
 }
 
 void Grid::firstFit() {

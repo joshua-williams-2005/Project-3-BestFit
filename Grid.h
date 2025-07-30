@@ -20,4 +20,7 @@ public:
     void bestFit();
     void printGrid();
     void results();
+    void printRectangles();
+    void printBins();
+
 };

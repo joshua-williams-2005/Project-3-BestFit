@@ -1,1 +1,1 @@
-CMakeLists.txt not found in C:\Users\haozh\CLionProjects\bestfit Select CMakeLists.txt
+CMakeLists.txt not found in /Users/benzhang/CLionProjects/Project-3-BestFit Select CMakeLists.txt

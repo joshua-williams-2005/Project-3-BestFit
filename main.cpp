@@ -5,8 +5,8 @@
 using namespace std;
 
 int main() {
-    // Grid g;
-    //Bin b;
+    Grid g;
+
     std::string userInput;
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate Rectangles" << endl;
@@ -19,7 +19,7 @@ int main() {
         std::getline(std::cin, userInput);
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
-            // g.createRectangles();
+            g.createRectangles();
             //cout << b.capacity << endl;
         }
         else if (userInput == "2") {
