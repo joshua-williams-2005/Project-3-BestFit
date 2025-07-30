@@ -6,14 +6,11 @@ Bin::Bin() {
     rows = 50;
     columns = 50;
 }
+
 bool Bin::is_empty(){//to check if the bin is empty
-    if (capacity==0){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return capacity == 2500;
 }
+
 pair<int, int> Bin::canFit(int length, int width) {
     if (length > rows || width > columns) {
         return make_pair(-50,-50);
