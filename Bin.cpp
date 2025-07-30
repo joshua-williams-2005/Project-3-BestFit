@@ -71,6 +71,7 @@ void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
     //Verify if placement is valid
     if (!canPlaceAt(height, width, startRow, startCol)) {
         cout << "Can't place rectangle" << endl;
+        return;
     }
     //Place rectangle
     for(int i = 0; i < height; i++) {
