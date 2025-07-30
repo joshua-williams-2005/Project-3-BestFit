@@ -51,12 +51,12 @@ void Grid::firstFit() {
 
         //iterate through every bin, but break once inserted
         for (int j = 0; j < 100; ++j) {
-            Bin b = bins[j];
+            Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
                 b.placetherec(length,width,p1.first,p1.second);
-                b.capacity = b.capacity - (length * width);
+                //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
                 break;
             }
         }
@@ -65,7 +65,7 @@ void Grid::firstFit() {
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b is empty){
+        if (b.is_empty()){
           FFspace++;
         }
     }
@@ -81,7 +81,7 @@ void Grid::bestFit() {
         int bestIndex = -1;
         //check which bin has the least empty space when inserted
         for (int j = 0; j < 100; ++j) {
-            Bin b = bins[j];
+            Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
@@ -96,13 +96,13 @@ void Grid::bestFit() {
         Bin b = bins[bestIndex];
         pair<int,int> p1 = b.canFit(length,width);
         b.placetherec(length,width,p1.first,p1.second);
-        b.capacity = b.capacity - (length * width);
+        //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
     }
 
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b.capacity){
+        if (b.is_empty()){
             BFspace++;
         }
     }
