@@ -1,5 +1,4 @@
 #include "Grid.h"
-#include "Bin.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -20,7 +19,6 @@ int main() {
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
             g.createRectangles();
-            //cout << b.capacity << endl;
         }
         else if (userInput == "2") {
             cout<<"first-fit" << endl;
