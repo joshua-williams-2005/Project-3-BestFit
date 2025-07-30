@@ -3,17 +3,16 @@
 #include <utility>
 
 struct board {
-    bool a = false;
+    bool occupied = false;
 };
 
 class Bin {
 private:
     int rows;
     int columns;
-
-    board a[50][50];
+    board table[50][50];
 public:
-    int capacity=2500;
+    int capacity = 2500;
     Bin();
     std::pair<int, int> canFit(int height, int width);
     bool is_empty();

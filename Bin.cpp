@@ -36,7 +36,7 @@ pair<int, int> Bin::canFit(int length, int width) {
             flag=true;
             for(int k = 0;k< length; ++k) {
                 for (int l = 0; l < width; ++l) {
-                    if (a[i+k][j+l].a == true) {
+                    if (table[i+k][j+l].occupied == true) {
                         flag=false;
                     }
                 }
@@ -59,7 +59,7 @@ pair<int, int> Bin::canFit(int length, int width) {
 void Bin::placetherec(int length, int width, int startrows, int startcol) {
     for(int i=0;i<length;i++) {
         for (int j = 0; j < width; j++){
-            a[i + startrows][j + startcol].a = true;
+            table[i + startrows][j + startcol].occupied = true;
         }
     }
     capacity = capacity - (length * width);
