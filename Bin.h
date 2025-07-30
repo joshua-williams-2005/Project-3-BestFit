@@ -15,5 +15,6 @@ public:
     int capacity = 2500;
     std::pair<int, int> canFit(int height, int width);
     bool is_empty();
+    bool canPlaceAt(int height, int width, int startRow, int startCol);
     void placeRectangle(int height, int width, int startRow, int startCol);
 };

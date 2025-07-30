@@ -17,6 +17,21 @@ bool Bin::is_empty(){//to check if the bin is empty
     return capacity == 2500;
 }
 
+bool canPlaceAt(int height, int width, int startRow, int startCol) {
+    if (startRow + height > rows || startCol + width > columns) {
+        return false;
+    }
+    //check values
+    for (int i = startRow; i < startRow + height; i++) {
+        for (int j = startCol; j < startCol + width; j++) {
+            if (table[i][j].occupied) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
 pair<int, int> Bin::canFit(int length, int width) {
     if (length > rows || width > columns) {
         return make_pair(-50,-50);
@@ -60,7 +75,7 @@ pair<int, int> Bin::canFit(int length, int width) {
 }
 
 void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
-    for(int i=0;i<height;i++) {
+    for(int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++){
             table[i + startRow][j + startCol].occupied = true;
         }
