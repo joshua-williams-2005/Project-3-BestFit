@@ -32,8 +32,8 @@ bool canPlaceAt(int height, int width, int startRow, int startCol) {
     return true;
 }
 
-pair<int, int> Bin::canFit(int length, int width) {
-    if (length > rows || width > columns) {
+pair<int, int> Bin::canFit(int height, int width) {
+    if (height > rows || width > columns) {
         return make_pair(-50,-50);
     }
     const int N=50;
@@ -41,18 +41,11 @@ pair<int, int> Bin::canFit(int length, int width) {
     int over=0;
     int newx=-50;
     int newy=-50;
-    /*for(int i = 0;i< height; ++i) {
-        for (int j = 0; j < width; ++j) {
-            if (a[i][j].a == true) {
-                return false;
-            }
-        }
-    }*/
     int i,j;
-    for(i=0;i<N-length;i++){
+    for(i=0;i<N-height;i++){
         for(j=0;j<N-width;j++){
             flag=true;
-            for(int k = 0;k< length; ++k) {
+            for(int k = 0;k< height; ++k) {
                 for (int l = 0; l < width; ++l) {
                     if (table[i+k][j+l].occupied == true) {
                         flag=false;
