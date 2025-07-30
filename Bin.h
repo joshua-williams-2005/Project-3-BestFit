@@ -1,17 +1,21 @@
 #pragma once
+#include <utility>
 
 struct board {
-    bool a = false;
+    bool occupied = false;
 };
 
 class Bin {
 private:
     int rows;
     int columns;
-    board a[50][50];
+    board table[50][50];
 public:
-    int capacity;
     Bin();
+    int capacity = 2500;
     std::pair<int, int> canFit(int height, int width);
-    void placetherec(int width, int height, int startrows, int startcol);
+    bool is_empty();
+    bool canPlaceAt(int height, int width, int startRow, int startCol);
+    void placeRectangle(int height, int width, int startRow, int startCol);
+    void printBin();
 };

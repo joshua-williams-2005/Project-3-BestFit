@@ -4,9 +4,8 @@ using namespace std;
 
 Grid::Grid() {
     this->numBins = 100; //we can change later
-    //# of empty bins after BF and FF
-    this->FFspace = 0;
-    this->BFspace = 0;
+    //    this->FFspace = 100;
+    //    this->BFspace = 100;
     //creating 100 empty bins in the grid
     for (int i = 0; i < 100; i++) {
       Bin b;
@@ -52,12 +51,12 @@ void Grid::firstFit() {
 
         //iterate through every bin, but break once inserted
         for (int j = 0; j < 100; ++j) {
-            Bin b = bins[j];
+            Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
-                b.placetherec(length,width,p1.first,p1.second);
-                b.capacity = b.capacity - (length * width);
+                b.placeRectangle(length,width,p1.first,p1.second);
+                //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
                 break;
             }
         }
@@ -66,7 +65,7 @@ void Grid::firstFit() {
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b.capacity == 0){
+        if (b.is_empty()){
           FFspace++;
         }
     }
@@ -82,7 +81,7 @@ void Grid::bestFit() {
         int bestIndex = -1;
         //check which bin has the least empty space when inserted
         for (int j = 0; j < 100; ++j) {
-            Bin b = bins[j];
+            Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
@@ -96,22 +95,21 @@ void Grid::bestFit() {
         //insert into the best fit bin and update the bin's capacity
         Bin b = bins[bestIndex];
         pair<int,int> p1 = b.canFit(length,width);
-        b.placetherec(length,width,p1.first,p1.second);
-        b.capacity = b.capacity - (length * width);
+        b.placeRectangle(length,width,p1.first,p1.second);
+        //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
     }
 
     //check for space
     for (int i = 0; i < 100; ++i) {
         Bin b = bins[i];
-        if (b.capacity == 0){
+        if (b.is_empty()){
             BFspace++;
         }
     }
-
 }
 
 void Grid::results() {
-  cout << "RESULTS" << endl;
-  cout << "First Fit empty bins: " << FFspace << "/100000 bins remaining" << endl;
-  cout << "Best Fit empty bins: " << BFspace << "/100000 bins remaining" << endl;
+  cout << "Results" << endl;
+  cout << "First Fit empty bins: " << FFspace << endl;
+  cout << "Best Fit empty bins: " << BFspace << endl;
 }
