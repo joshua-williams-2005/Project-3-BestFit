@@ -81,3 +81,13 @@ void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
     }
     capacity -= (height * width);
 }
+
+void Bin::printBin() {
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < columns; j++) {
+            cout << table[i][j].occupied << " ";
+        }
+        cout << endl;
+    }
+    cout << "remaining capcity: " << capacity << endl;
+}
