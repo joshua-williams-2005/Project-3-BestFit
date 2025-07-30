@@ -1,5 +1,4 @@
 #include "Grid.h"
-
 using namespace std;
 
 Grid::Grid() {
@@ -8,8 +7,8 @@ Grid::Grid() {
     //    this->BFspace = 100;
     //creating 100 empty bins in the grid
     for (int i = 0; i < 100; i++) {
-      Bin b;
-      bins.push_back(b);
+        Bin b;
+        bins.push_back(b);
     }
 }
 void Grid::createRectangles(){
