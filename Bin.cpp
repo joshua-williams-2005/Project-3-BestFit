@@ -68,6 +68,11 @@ pair<int, int> Bin::canFit(int height, int width) {
 }
 
 void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
+    //Verify if placement is valid
+    if (!canPlaceAt(height, width, startRow, startCol)) {
+        cout << "Can't place rectangle" << endl;
+    }
+    //Place rectangle
     for(int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++){
             table[i + startRow][j + startCol].occupied = true;
