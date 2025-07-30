@@ -13,7 +13,7 @@ Bin::Bin() {
     }
 }
 
-bool Bin::is_empty(){//to check if the bin is empty
+bool Bin::is_empty() {//to check if the bin is empty
     return capacity == 2500;
 }
 
@@ -31,7 +31,21 @@ bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
     }
     return true;
 }
+pair<int, int> Bin::canFit(int height, int width) {
+    if (height > rows || width > columns) {
+        return make_pair(-50, -50);
+    }
 
+    for(int i = 0; i <= rows - height; i++) {
+        for(int j = 0; j <= columns - width; j++) {
+            if(canPlaceAt(height, width, i, j)) {
+                return make_pair(i, j);
+            }
+        }
+    }
+
+    return make_pair(-50, -50);
+}/*
 pair<int, int> Bin::canFit(int height, int width) {
     if (height > rows || width > columns) {
         return make_pair(-50,-50);
@@ -63,9 +77,8 @@ pair<int, int> Bin::canFit(int height, int width) {
             break;
         }
     }
-
     return make_pair(newx,newy);
-}
+}*/
 
 void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
     //Verify if placement is valid

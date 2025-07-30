@@ -7,7 +7,6 @@ using namespace std;
 int main() {
     // Grid g;
     //Bin b;
-
     std::string userInput;
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate Rectangles" << endl;
