@@ -55,7 +55,7 @@ void Grid::firstFit() {
             pair<int,int> p1;
             p1 = b.canFit(length,width);
             if (p1.first != -50 || p1.second != -50){
-                b.placetherec(length,width,p1.first,p1.second);
+                b.placeRectangle(length,width,p1.first,p1.second);
                 //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
                 break;
             }
@@ -95,7 +95,7 @@ void Grid::bestFit() {
         //insert into the best fit bin and update the bin's capacity
         Bin b = bins[bestIndex];
         pair<int,int> p1 = b.canFit(length,width);
-        b.placetherec(length,width,p1.first,p1.second);
+        b.placeRectangle(length,width,p1.first,p1.second);
         //b.capacity = b.capacity - (length * width); i put it in the place the rec method- alex
     }
 

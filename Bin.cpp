@@ -59,11 +59,11 @@ pair<int, int> Bin::canFit(int length, int width) {
     return make_pair(newx,newy);
 }
 
-void Bin::placetherec(int length, int width, int startrows, int startcol) {
-    for(int i=0;i<length;i++) {
+void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
+    for(int i=0;i<height;i++) {
         for (int j = 0; j < width; j++){
-            table[i + startrows][j + startcol].occupied = true;
+            table[i + startRow][j + startCol].occupied = true;
         }
     }
-    capacity = capacity - (length * width);
+    capacity -= (height * width);
 }
