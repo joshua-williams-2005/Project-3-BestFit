@@ -8,7 +8,7 @@ Bin::Bin() {
     //initialize all table positions as unoccupied
     for(int r = 0; r < rows; r++) {
         for(int c = 0; c < columns; c++) {
-            grid[r][c].occupied = false;
+            table[r][c].occupied = false;
         }
     }
 }
@@ -17,7 +17,7 @@ bool Bin::is_empty(){//to check if the bin is empty
     return capacity == 2500;
 }
 
-bool canPlaceAt(int height, int width, int startRow, int startCol) {
+bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
     if (startRow + height > rows || startCol + width > columns) {
         return false;
     }
