@@ -16,7 +16,7 @@ Grid::Grid() {
 void Grid::createRectangles(){
     random_device rd;  // Seed
     mt19937 gen(rd()); // Mersenne Twister engine
-    uniform_int_distribution<> dist(1, 50); // Range [1, 50], which will be always be less than bin height and width
+    uniform_int_distribution<> dist(1, 5); // Range [1, 50], which will be always be less than bin height and width
 
     vector<int> heights;
     vector<int> widths;
@@ -40,7 +40,7 @@ void Grid::createRectangles(){
 }
 void Grid::createSetRectangles(){
   std::mt19937 rng(42); // Fixed seed for reproducibility
-    std::uniform_int_distribution<int> dist(1, 50);
+    std::uniform_int_distribution<int> dist(1, 5);
 
 
 
