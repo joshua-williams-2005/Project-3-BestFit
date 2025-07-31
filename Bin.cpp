@@ -110,5 +110,5 @@ void Bin::emptyBin() {
             table[r][c].occupied = false;
         }
     }
-    capacity=0;
+    capacity=N*N;
 }
