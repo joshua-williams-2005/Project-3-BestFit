@@ -18,4 +18,5 @@ public:
     bool canPlaceAt(int height, int width, int startRow, int startCol);
     void placeRectangle(int height, int width, int startRow, int startCol);
     void printBin();
+    void emptyBin();
 };
