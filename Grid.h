@@ -22,5 +22,5 @@ public:
     void results();
     void printRectangles();
     void printBins();
-
+    void emptyBins();
 };

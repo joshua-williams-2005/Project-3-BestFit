@@ -36,6 +36,7 @@ void Grid::createRectangles(){
         p.second = widths[i];
         rectangles.push_back(p);
     }
+
 }
 //testing/debugging function
 void Grid::printGrid() {
@@ -51,6 +52,12 @@ void Grid::printBins(){
         Bin b = bins[i];
         b.printBin();
     }
+}
+void Grid::emptyBins(){
+  for (int i = 0; i < bins.size(); ++i){
+        Bin &b = bins[i];
+        b.emptyBin();
+  }
 }
 
 void Grid::firstFit() {

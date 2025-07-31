@@ -3,8 +3,8 @@
 using namespace std;
 
 Bin::Bin() {
-    rows = 50;
-    columns = 50;
+    rows = 5;
+    columns = 5;
     //initialize all table positions as unoccupied
     for(int r = 0; r < rows; r++) {
         for(int c = 0; c < columns; c++) {
@@ -14,7 +14,7 @@ Bin::Bin() {
 }
 
 bool Bin::is_empty() {//to check if the bin is empty
-    return capacity == 2500;
+    return capacity == 25;
 }
 
 bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
