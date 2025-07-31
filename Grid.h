@@ -1,10 +1,12 @@
 #pragma once
+
 #include "Bin.h"
 #include <iostream>
 #include <vector>
 #include <random>
 using namespace std;
-
+const int NUM_RECS=100;
+const int NUM_BINS=100;
 class Grid {
 private:
     int FFspace;
@@ -25,4 +27,6 @@ public:
     void printRectangles();
     void printBins();
     void emptyBins();
+    int getFFspace();
+    int getBFspace();
 };

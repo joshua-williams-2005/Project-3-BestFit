@@ -3,12 +3,12 @@
 using namespace std;
 
 Grid::Grid() {
-    this->numBins = 100; //we can change later
+    this->numBins = NUM_BINS; //we can change later
     //# of empty bins after BF and FF
     this->FFspace = 0;
     this->BFspace = 0;
     //creating 100 empty bins in the grid
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < NUM_BINS; i++) {
       Bin b;
       bins.push_back(b);
     }
@@ -21,16 +21,16 @@ void Grid::createRectangles(){
     vector<int> heights;
     vector<int> widths;
 
-    // Generate 100 random heights
-    for (int i = 0; i < 100; ++i) {
+    // Generate NUM_RECS random heights
+    for (int i = 0; i < NUM_RECS; ++i) {
         heights.push_back(dist(gen));
     }
-    // Generate 100 random widths
-    for (int i = 0; i < 100; ++i) {
+    // Generate NUM_RECS random widths
+    for (int i = 0; i < NUM_RECS; ++i) {
         widths.push_back(dist(gen));
     }
-    //putting the 100 random rectangles into an array of pairs
-    for (int i = 0; i < 100; ++i){
+    //putting the NUM_RECS random rectangles into an array of pairs
+    for (int i = 0; i < NUM_RECS; ++i){
         pair <int, int> p;
         p.first = heights[i];
         p.second = widths[i];
@@ -42,8 +42,6 @@ void Grid::createSetRectangles(){
   std::mt19937 rng(42); // Fixed seed for reproducibility
     std::uniform_int_distribution<int> dist(1, 5);
 
-
-
     for (int i = 0; i < 100; ++i) {
         pair <int, int> p;
         p.first = dist(rng);
@@ -51,10 +49,9 @@ void Grid::createSetRectangles(){
         rectangles.push_back(p);
     }
 }
-
 void Grid::createPredeterminedRectangles() {
-    vector<int> heights = {1, 2, 3, 4, 5};
-    vector<int> widths = {1, 2, 3, 4, 5};
+    vector<int> heights = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
+    vector<int> widths = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
     for (int i = 0; i < heights.size(); ++i) {
         pair<int, int> p;
         p.first = heights[i];
@@ -82,22 +79,24 @@ void Grid::emptyBins(){
         Bin &b = bins[i];
         b.emptyBin();
   }
+  FFspace = 0;
+  BFspace = 0;
 }
 
 void Grid::firstFit() {
     cout << "First Fit" << endl;
 
     //iterate through every rectangle
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < NUM_RECS; ++i) {
         int height = rectangles[i].first; //height of rectangle i
         int width = rectangles[i].second; //width of rectangle i
 
         //iterate through every bin, but break once inserted
-        for (int j = 0; j < 100; ++j) {
+        for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 && p1.second != -50){
+            if (p1.first != -50 || p1.second != -50){
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
             }
@@ -105,7 +104,7 @@ void Grid::firstFit() {
     }
 
     //check for space
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < NUM_BINS; ++i) {
         Bin b = bins[i];
         if (b.is_empty()){
           FFspace++;
@@ -115,18 +114,19 @@ void Grid::firstFit() {
 
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
-    for (int i = 0; i < 100; ++i) {
+
+    for (int i = 0; i < NUM_RECS; ++i) {
         int height = rectangles[i].first; //height of rectangle i
         int width = rectangles[i].second; //width of rectangle i
 
         int min = 1000000;
         int bestIndex = -1;
         //check which bin has the least empty space when inserted
-        for (int j = 0; j < 100; ++j) {
+        for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 && p1.second != -50){
+            if (p1.first != -50 || p1.second != -50){
                 int space = b.capacity - (height * width);
                 if (space < min) {
                   min = space;
@@ -141,7 +141,7 @@ void Grid::bestFit() {
     }
 
     //check for space
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < NUM_BINS; ++i) {
         Bin b = bins[i];
         if (b.is_empty()){
             BFspace++;
@@ -149,8 +149,21 @@ void Grid::bestFit() {
     }
 }
 
-void Grid::results() {
-  cout << "RESULTS" << endl;
-  cout << "First Fit empty bins: " << FFspace << "/100000 bins remaining" << endl;
-  cout << "Best Fit empty bins: " << BFspace << "/100000 bins remaining" << endl;
+int Grid::getFFspace(){
+    return FFspace;
 }
+int Grid::getBFspace(){
+    return BFspace;
+}
+void Grid::results() {
+
+  firstFit();
+  emptyBins();
+  bestFit();
+  emptyBins();
+
+  cout << "RESULTS" << endl;
+  cout << "First Fit empty bins: " << FFspace << "/100 bins remaining" << endl;
+  cout << "Best Fit empty bins: " << BFspace << "/100 bins remaining" << endl;
+}
+
