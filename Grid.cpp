@@ -51,6 +51,17 @@ void Grid::createSetRectangles(){
         rectangles.push_back(p);
     }
 }
+
+void Grid::createPredeterminedRectangles() {
+    vector<int> heights = {1, 2, 3, 4, 5};
+    vector<int> widths = {1, 2, 3, 4, 5};
+    for (int i = 0; i < heights.size(); ++i) {
+        pair<int, int> p;
+        p.first = heights[i];
+        p.second = widths[i];
+        rectangles.push_back(p);
+    }
+}
 //testing/debugging function
 void Grid::printGrid() {
 

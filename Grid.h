@@ -17,6 +17,7 @@ public:
     Grid();
     void createRectangles();
     void createSetRectangles();
+    void createPredeterminedRectangles();
     void firstFit();
     void bestFit();
     void printGrid();
