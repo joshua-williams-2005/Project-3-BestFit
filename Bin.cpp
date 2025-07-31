@@ -1,7 +1,6 @@
 #include "Bin.h"
 #include <iostream>
 using namespace std;
-const int N=5;
 Bin::Bin() {
     rows = N;
     columns = N;
