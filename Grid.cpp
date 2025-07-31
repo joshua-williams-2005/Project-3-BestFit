@@ -135,7 +135,7 @@ void Grid::bestFit() {
             }
         }
         //insert into the best fit bin and update the bin's capacity
-        Bin b = bins[bestIndex];
+        Bin &b = bins[bestIndex];
         pair<int,int> p1 = b.canFit(height,width);
         b.placeRectangle(height,width,p1.first,p1.second);
     }
