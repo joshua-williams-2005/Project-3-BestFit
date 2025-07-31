@@ -1,10 +1,10 @@
 #include "Bin.h"
 #include <iostream>
 using namespace std;
-
+const int N=5;
 Bin::Bin() {
-    rows = 5;
-    columns = 5;
+    rows = N;
+    columns = N;
     //initialize all table positions as unoccupied
     for(int r = 0; r < rows; r++) {
         for(int c = 0; c < columns; c++) {
@@ -14,7 +14,7 @@ Bin::Bin() {
 }
 
 bool Bin::is_empty() {//to check if the bin is empty
-    return capacity == 25;
+    return capacity == N*N;
 }
 
 bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
