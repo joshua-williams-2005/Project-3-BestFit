@@ -97,7 +97,7 @@ void Grid::firstFit() {
             Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 || p1.second != -50){
+            if (p1.first != -50 && p1.second != -50){
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
             }
@@ -126,7 +126,7 @@ void Grid::bestFit() {
             Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 || p1.second != -50){
+            if (p1.first != -50 && p1.second != -50){
                 int space = b.capacity - (height * width);
                 if (space < min) {
                   min = space;
