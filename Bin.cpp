@@ -104,3 +104,11 @@ void Bin::printBin() {
     }
     cout << "remaining capcity: " << capacity << endl;
 }
+
+void Bin::emptyBin() {
+    for(int r = 0; r < rows; r++) {
+        for(int c = 0; c < columns; c++) {
+            table[r][c].occupied = false;
+        }
+    }
+}
