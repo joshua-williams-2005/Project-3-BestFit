@@ -16,6 +16,7 @@ private:
 public:
     Grid();
     void createRectangles();
+    void Grid::createSetRectangles();
     void firstFit();
     void bestFit();
     void printGrid();

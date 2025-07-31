@@ -38,6 +38,19 @@ void Grid::createRectangles(){
     }
 
 }
+void Grid::createSetRectangles(){
+  std::mt19937 rng(42); // Fixed seed for reproducibility
+    std::uniform_int_distribution<int> dist(1, 50);
+
+
+
+    for (int i = 0; i < 100; ++i) {
+        pair <int, int> p;
+        p.first = dist(rng);
+        p.second = dist(rng);
+        rectangles.push_back(p);
+    }
+}
 //testing/debugging function
 void Grid::printGrid() {
 
