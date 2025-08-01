@@ -1,6 +1,7 @@
 #include "Grid.h"
 #include <iostream>
 #include <string>
+#include <chrono>
 using namespace std;
 
 int main() {
@@ -20,46 +21,57 @@ int main() {
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
             g.createRectangles(); //reset vector of rectangles and generate 100,000 random rectangles
-            g.printRectangles();
+            g.printRectangles(); 
         }
         else if (userInput == "2") {
             cout<<"first-fit" << endl;
             //calculate time
+            auto time0=chrono::system_clock::now();
             g.firstFit();
+            auto time1=chrono::system_clock::now();
+            std::chrono::duration<double> time2 = time1 - time0;
             g.printBins();
             int space = g.getFFspace();
 
             cout << "First Fit empty bins: " << space << endl;
-            cout << "Time to run First Fit: " << 0 << endl; //replace 0 with the time fixme
+            cout << "Time to run First Fit: " << time2.count() <<" seconds."<< endl;
             g.emptyBins();
 
         }
         else if (userInput == "3") {
             cout<<"best-fit" << endl;
             //calculate time
+            auto time0=chrono::system_clock::now();
             g.bestFit();
+            auto time1=chrono::system_clock::now();
+            std::chrono::duration<double> time2 = time1 - time0;
             g.printBins();
             int space = g.getBFspace();
             cout << "Best Fit empty bins: " << space << endl;
-            cout << "Time to run Best Fit: " << 0 << endl; //replace 0 with the time fixme
+            cout << "Time to run Best Fit: " << time2.count() <<" seconds."<< endl;
             g.emptyBins();
         }
         else if (userInput == "4") {
             int BFspace, FFspace;
-
+            auto time0=chrono::system_clock::now();
             g.firstFit();
+            auto time1=chrono::system_clock::now();
+            std::chrono::duration<double> firstFitTime = time1 - time0;
             g.printBins();
             FFspace = g.getFFspace();
             g.emptyBins(); //resets BFspace and FFspace
+            auto time2=chrono::system_clock::now();
             g.bestFit();
+            auto time3=chrono::system_clock::now();
+            std::chrono::duration<double> bestFitTime = time3 - time2;
             g.printBins();
             BFspace = g.getBFspace(); //resets BFspace and FFspace
             g.emptyBins();
             cout << "RESULTS" << endl;
             cout << "First Fit empty bins: " << FFspace << endl;
             cout << "Best Fit empty bins: " << BFspace << endl;
-            cout << "Time to run First Fit: " << 0 << endl;
-            cout << "Time to run Best Fit: " << 0 << endl;
+            cout << "Time to run First Fit: " << firstFitTime.count() <<" seconds."<< endl;
+            cout << "Time to run Best Fit: " << bestFitTime.count() <<" seconds."<< endl;
             //space is how many empty bins, so more empty bins is better, saving more space
             if(BFspace > FFspace) { //should happen
                 cout << "Best Fit saves " << BFspace - FFspace << " bins" << endl;
@@ -70,7 +82,16 @@ int main() {
             else{ //equal space
                 cout << "Both algorithms save the same amount of bins" << endl;
             }
-            //fixme add something about the time saved
+            if(firstFitTime.count() > bestFitTime.count()) { //shouldn't happen
+                cout << "Best Fit saves " << firstFitTime.count() - bestFitTime.count() << " seconds" << endl;
+            }
+            else if (bestFitTime.count() > firstFitTime.count()){ //should happen
+                cout << "First Fit saves " << firstFitTime.count() - bestFitTime.count() << " seconds" << endl;
+            }
+            else{ //equal space
+                cout << "Both algorithms use the same amount of time" << endl;
+            }
+            
         }
         else if (userInput == "5") {
             cout<<"exit" << endl;
@@ -80,6 +101,5 @@ int main() {
         }
     }
 }
-
 
 
