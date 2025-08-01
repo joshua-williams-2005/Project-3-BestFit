@@ -1,6 +1,7 @@
 #include "Bin.h"
 #include <iostream>
 using namespace std;
+
 Bin::Bin() {
     rows = N;
     columns = N;
@@ -12,8 +13,8 @@ Bin::Bin() {
     }
 }
 
-bool Bin::is_empty() {//to check if the bin is empty
-    return capacity == N*N;
+bool Bin::is_empty() {
+    return capacity == N * N;
 }
 
 bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
@@ -110,5 +111,5 @@ void Bin::emptyBin() {
             table[r][c].occupied = false;
         }
     }
-    capacity=N*N;
+    capacity = N*N;
 }

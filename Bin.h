@@ -1,6 +1,7 @@
 #pragma once
 #include <utility>
-const int N=5;//for the side length of bins
+const int N = 5;//for the side length of bins
+
 struct board {
     bool occupied = false;
 };
@@ -12,7 +13,7 @@ private:
     board table[N][N];
 public:
     Bin();
-    int capacity = N*N;
+    int capacity = N * N;
     std::pair<int, int> canFit(int height, int width);
     bool is_empty();
     bool canPlaceAt(int height, int width, int startRow, int startCol);
