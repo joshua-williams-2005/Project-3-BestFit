@@ -22,7 +22,6 @@ public:
     void createPredeterminedRectangles();
     void firstFit();
     void bestFit();
-    void printGrid();
     void results();
     void printRectangles();
     void printBins();

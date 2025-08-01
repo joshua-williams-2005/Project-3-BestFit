@@ -38,8 +38,8 @@ void Grid::createRectangles(){
     }
 
 }
-void Grid::createSetRectangles(){
-  std::mt19937 rng(42); // Fixed seed for reproducibility
+void Grid::createSetRectangles() {
+    std::mt19937 rng(42); // Fixed seed for reproducibility
     std::uniform_int_distribution<int> dist(1, 5);
 
     for (int i = 0; i < 100; ++i) {
@@ -59,10 +59,7 @@ void Grid::createPredeterminedRectangles() {
         rectangles.push_back(p);
     }
 }
-//testing/debugging function
-void Grid::printGrid() {
-
-}
+//test function
 void Grid::printRectangles() {
   for (int i = 0; i < rectangles.size(); ++i) {
     cout << rectangles[i].first << " " << rectangles[i].second << endl;
