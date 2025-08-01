@@ -30,7 +30,7 @@ int main() {
             int space = g.getFFspace();
 
             cout << "First Fit empty bins: " << space << endl;
-            cout << "Time to run First Fit: " << 0 << endl;
+            cout << "Time to run First Fit: " << 0 << endl; //replace 0 with the time fixme
             g.emptyBins();
 
         }
@@ -41,7 +41,7 @@ int main() {
             g.printBins();
             int space = g.getBFspace();
             cout << "Best Fit empty bins: " << space << endl;
-            cout << "Time to run Best Fit: " << 0 << endl;
+            cout << "Time to run Best Fit: " << 0 << endl; //replace 0 with the time fixme
             g.emptyBins();
         }
         else if (userInput == "4") {
@@ -70,6 +70,7 @@ int main() {
             else{ //equal space
                 cout << "Both algorithms save the same amount of bins" << endl;
             }
+            //fixme add something about the time saved
         }
         else if (userInput == "5") {
             cout<<"exit" << endl;
