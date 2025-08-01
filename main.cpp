@@ -1,5 +1,4 @@
 #include "Grid.h"
-#include "Bin.h"
 #include <iostream>
 #include <string>
 using namespace std;
