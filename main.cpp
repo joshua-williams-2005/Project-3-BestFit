@@ -86,7 +86,7 @@ int main() {
                 cout << "Best Fit saves " << firstFitTime.count() - bestFitTime.count() << " seconds" << endl;
             }
             else if (bestFitTime.count() > firstFitTime.count()){ //should happen
-                cout << "First Fit saves " << firstFitTime.count() - bestFitTime.count() << " seconds" << endl;
+                cout << "First Fit saves " << bestFitTime.count() - firstFitTime.count() << " seconds" << endl;
             }
             else{ //equal space
                 cout << "Both algorithms use the same amount of time" << endl;
