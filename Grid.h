@@ -18,11 +18,8 @@ private:
 public:
     Grid();
     void createRectangles();
-    void createSetRectangles();
-    void createPredeterminedRectangles();
     void firstFit();
     void bestFit();
-    void results();
     void printRectangles();
     void printBins();
     void emptyBins();
