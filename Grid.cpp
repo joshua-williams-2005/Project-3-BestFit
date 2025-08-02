@@ -89,8 +89,7 @@ void Grid::firstFit() {
 
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
-    std::sort(rectangles.begin(), rectangles.end(), 
-          [](const auto& a, const auto& b) {
+    sort(rectangles.begin(), rectangles.end(), [](auto& a, auto& b) {
               return a.first * a.second > b.first * b.second;
           });
     for (int i = 0; i < NUM_RECS; ++i) {
