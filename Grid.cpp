@@ -1,5 +1,5 @@
 #include "Grid.h"
-
+#include <algorithm>
 using namespace std;
 
 Grid::Grid() {
@@ -40,9 +40,9 @@ void Grid::createRectangles(){
 }
 void Grid::createSetRectangles() {
     std::mt19937 rng(42); // Fixed seed for reproducibility
-    std::uniform_int_distribution<int> dist(1, 5);
+    std::uniform_int_distribution<int> dist(1, 50);
 
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 10000; ++i) {
         pair <int, int> p;
         p.first = dist(rng);
         p.second = dist(rng);
@@ -111,30 +111,24 @@ void Grid::firstFit() {
 
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
-
+    std::sort(rectangles.begin(), rectangles.end(), 
+          [](const auto& a, const auto& b) {
+              return a.first * a.second > b.first * b.second;
+          });
     for (int i = 0; i < NUM_RECS; ++i) {
         int height = rectangles[i].first; //height of rectangle i
         int width = rectangles[i].second; //width of rectangle i
 
-        int min = 1000000;
-        int bestIndex = -1;
-        //check which bin has the least empty space when inserted
+        //iterate through every bin, but break once inserted
         for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 || p1.second != -50){
-                int space = b.capacity - (height * width);
-                if (space < min) {
-                  min = space;
-                  bestIndex = j;
-                }
+            if (p1.first != -50 && p1.second != -50){
+                b.placeRectangle(height,width,p1.first,p1.second);
+                break;
             }
         }
-        //insert into the best fit bin and update the bin's capacity
-        Bin &b = bins[bestIndex];
-        pair<int,int> p1 = b.canFit(height,width);
-        b.placeRectangle(height,width,p1.first,p1.second);
     }
 
     //check for space
@@ -163,4 +157,3 @@ void Grid::results() {
   cout << "First Fit empty bins: " << FFspace << "/100 bins remaining" << endl;
   cout << "Best Fit empty bins: " << BFspace << "/100 bins remaining" << endl;
 }
-
