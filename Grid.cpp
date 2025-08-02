@@ -38,28 +38,6 @@ void Grid::createRectangles(){
     }
 
 }
-void Grid::createSetRectangles() {
-    std::mt19937 rng(42); // Fixed seed for reproducibility
-    std::uniform_int_distribution<int> dist(1, 50);
-
-    for (int i = 0; i < 10000; ++i) {
-        pair <int, int> p;
-        p.first = dist(rng);
-        p.second = dist(rng);
-        rectangles.push_back(p);
-    }
-}
-void Grid::createPredeterminedRectangles() {
-    vector<int> heights = {1, 2, 3, 4, 5, 5, 4, 3, 2, 1};
-    vector<int> widths = {1, 2, 3, 4, 5, 1, 2, 3, 4, 5};
-    for (int i = 0; i < heights.size(); ++i) {
-        pair<int, int> p;
-        p.first = heights[i];
-        p.second = widths[i];
-        rectangles.push_back(p);
-    }
-}
-//test function
 void Grid::printRectangles() {
   for (int i = 0; i < rectangles.size(); ++i) {
     cout << rectangles[i].first << " " << rectangles[i].second << endl;
@@ -140,20 +118,9 @@ void Grid::bestFit() {
     }
 }
 
-int Grid::getFFspace(){
+int Grid::getFFspace() {
     return FFspace;
 }
-int Grid::getBFspace(){
+int Grid::getBFspace() {
     return BFspace;
-}
-void Grid::results() {
-
-  firstFit();
-  emptyBins();
-  bestFit();
-  emptyBins();
-
-  cout << "RESULTS" << endl;
-  cout << "First Fit empty bins: " << FFspace << "/100 bins remaining" << endl;
-  cout << "Best Fit empty bins: " << BFspace << "/100 bins remaining" << endl;
 }
