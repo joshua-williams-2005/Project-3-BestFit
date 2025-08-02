@@ -21,7 +21,7 @@ int main() {
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
             g.createRectangles(); //reset vector of rectangles and generate 100,000 random rectangles
-            g.printRectangles(); 
+            //g.printRectangles(); 
         }
         else if (userInput == "2") {
             cout<<"first-fit" << endl;
@@ -30,7 +30,7 @@ int main() {
             g.firstFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> time2 = time1 - time0;
-            g.printBins();
+            //g.printBins();
             int space = g.getFFspace();
 
             cout << "First Fit empty bins: " << space << endl;
@@ -45,7 +45,7 @@ int main() {
             g.bestFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> time2 = time1 - time0;
-            g.printBins();
+            //g.printBins();
             int space = g.getBFspace();
             cout << "Best Fit empty bins: " << space << endl;
             cout << "Time to run Best Fit: " << time2.count() <<" seconds."<< endl;
@@ -57,14 +57,14 @@ int main() {
             g.firstFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> firstFitTime = time1 - time0;
-            g.printBins();
+            //g.printBins();
             FFspace = g.getFFspace();
             g.emptyBins(); //resets BFspace and FFspace
             auto time2=chrono::system_clock::now();
             g.bestFit();
             auto time3=chrono::system_clock::now();
             std::chrono::duration<double> bestFitTime = time3 - time2;
-            g.printBins();
+            //g.printBins();
             BFspace = g.getBFspace(); //resets BFspace and FFspace
             g.emptyBins();
             cout << "RESULTS" << endl;
@@ -76,7 +76,7 @@ int main() {
             if(BFspace > FFspace) { //should happen
                 cout << "Best Fit saves " << BFspace - FFspace << " bins" << endl;
             }
-            else if (BFspace > FFspace){ //shouldn't happen
+            else if (BFspace < FFspace){ //shouldn't happen
                 cout << "First Fit saves " << FFspace - BFspace << " bins" << endl;
             }
             else{ //equal space
