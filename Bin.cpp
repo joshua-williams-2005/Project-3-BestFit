@@ -13,11 +13,11 @@ Bin::Bin() {
     }
 }
 
-bool Bin::is_empty() {
+bool Bin::is_empty() const {
     return capacity == N * N;
 }
 
-bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) {
+bool Bin::canPlaceAt(int height, int width, int startRow, int startCol) const {
     if (startRow + height > rows || startCol + width > columns) {
         return false;
     }
@@ -45,7 +45,9 @@ pair<int, int> Bin::canFit(int height, int width) {
     }
 
     return make_pair(-50, -50);
-}/*
+}
+
+/*
 pair<int, int> Bin::canFit(int height, int width) {
     if (height > rows || width > columns) {
         return make_pair(-50,-50);
@@ -88,7 +90,7 @@ void Bin::placeRectangle(int height, int width, int startRow, int startCol) {
     }
     //Place rectangle
     for(int i = 0; i < height; i++) {
-        for (int j = 0; j < width; j++){
+        for (int j = 0; j < width; j++) {
             table[i + startRow][j + startCol].occupied = true;
         }
     }
@@ -111,5 +113,5 @@ void Bin::emptyBin() {
             table[r][c].occupied = false;
         }
     }
-    capacity = N*N;
+    capacity = N * N;
 }

@@ -15,8 +15,8 @@ public:
     Bin();
     int capacity = N * N;
     std::pair<int, int> canFit(int height, int width);
-    bool is_empty();
-    bool canPlaceAt(int height, int width, int startRow, int startCol);
+    bool is_empty() const;
+    bool canPlaceAt(int height, int width, int startRow, int startCol) const;
     void placeRectangle(int height, int width, int startRow, int startCol);
     void printBin();
     void emptyBin();
