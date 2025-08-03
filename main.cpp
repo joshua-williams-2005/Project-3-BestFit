@@ -3,7 +3,7 @@
 #include <string>
 #include <chrono>
 using namespace std;
-void printmenu(){
+void printmenu() {
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate New Rectangles" << endl;
     cout << "2. Run First-Fit Decreasing" << endl;
@@ -89,10 +89,10 @@ int main() {
             if(firstFitTime.count() > bestFitTime.count()) { //shouldn't happen
                 cout << "Best Fit saves " << firstFitTime.count() - bestFitTime.count() << " seconds" << endl;
             }
-            else if (bestFitTime.count() > firstFitTime.count()){ //should happen
+            else if (bestFitTime.count() > firstFitTime.count()) { //should happen
                 cout << "First Fit saves " << bestFitTime.count() - firstFitTime.count() << " seconds" << endl;
             }
-            else{ //equal space
+            else { //equal time
                 cout << "Both algorithms use the same amount of time" << endl;
             }
             printmenu();
