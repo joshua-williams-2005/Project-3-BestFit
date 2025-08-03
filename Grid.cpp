@@ -13,7 +13,10 @@ Grid::Grid() {
       bins.push_back(b);
     }
 }
-void Grid::createRectangles(){
+void Grid::createRectangles() {
+    rectangles.clear();
+    rectangles.reserve(NUM_BINS);
+
     random_device rd;  // Seed
     mt19937 gen(rd()); // Mersenne Twister engine
     uniform_int_distribution<> dist(1, 5); // Range [1, 50], which will be always be less than bin height and width
@@ -43,14 +46,14 @@ void Grid::printRectangles() {
     cout << rectangles[i].first << " " << rectangles[i].second << endl;
   }
 }
-void Grid::printBins(){
-    for (int i = 0; i < bins.size(); ++i){
+void Grid::printBins() {
+    for (int i = 0; i < bins.size(); ++i) {
         Bin b = bins[i];
         b.printBin();
     }
 }
-void Grid::emptyBins(){
-  for (int i = 0; i < bins.size(); ++i){
+void Grid::emptyBins() {
+  for (int i = 0; i < bins.size(); ++i) {
         Bin &b = bins[i];
         b.emptyBin();
   }
@@ -69,8 +72,7 @@ void Grid::firstFit() {
         //iterate through every bin, but break once inserted
         for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
-            pair<int,int> p1;
-            p1 = b.canFit(height,width);
+            pair<int,int> p1 = b.canFit(height,width);
             if (p1.first != -50 || p1.second != -50){
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
@@ -80,8 +82,7 @@ void Grid::firstFit() {
 
     //check for space
     for (int i = 0; i < NUM_BINS; ++i) {
-        Bin b = bins[i];
-        if (b.is_empty()){
+        if (bins[i].is_empty()) {
           FFspace++;
         }
     }
@@ -110,8 +111,7 @@ void Grid::bestFit() {
 
     //check for space
     for (int i = 0; i < NUM_BINS; ++i) {
-        Bin b = bins[i];
-        if (b.is_empty()){
+        if (bins[i].is_empty()){
             BFspace++;
         }
     }
