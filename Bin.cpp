@@ -69,7 +69,7 @@ void Bin::printBin() {
         }
         cout << endl;
     }
-    cout << "remaining capcity: " << capacity << endl;
+    cout << "remaining capacity: " << capacity << endl;
 }
 
 void Bin::emptyBin() {
