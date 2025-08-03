@@ -9,8 +9,8 @@ Grid::Grid() {
     this->BFspace = 0;
     //creating 100 empty bins in the grid
     for (int i = 0; i < NUM_BINS; i++) {
-      Bin b;
-      bins.push_back(b);
+        Bin b;
+        bins.push_back(b);
     }
 }
 void Grid::createRectangles() {
@@ -33,7 +33,7 @@ void Grid::createRectangles() {
         widths.push_back(dist(gen));
     }
     //putting the NUM_RECS random rectangles into an array of pairs
-    for (int i = 0; i < NUM_RECS; ++i){
+    for (int i = 0; i < NUM_RECS; ++i) {
         pair <int, int> p;
         p.first = heights[i];
         p.second = widths[i];
@@ -43,7 +43,7 @@ void Grid::createRectangles() {
 }
 void Grid::printRectangles() {
   for (int i = 0; i < rectangles.size(); ++i) {
-    cout << rectangles[i].first << " " << rectangles[i].second << endl;
+      cout << rectangles[i].first << " " << rectangles[i].second << endl;
   }
 }
 void Grid::printBins() {
@@ -72,10 +72,10 @@ void Grid::firstFit() {
         for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
             if(b.capacity < height * width) {
-              continue;
+                continue;
             }
             pair<int,int> p1 = b.canFit(height,width);
-            if (p1.first != -50 || p1.second != -50){
+            if (p1.first != -50 || p1.second != -50) {
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
             }
@@ -84,7 +84,7 @@ void Grid::firstFit() {
     //check for space
     for (int i = 0; i < NUM_BINS; ++i) {
         if (bins[i].is_empty()) {
-          FFspace++;
+            FFspace++;
         }
     }
 }
@@ -104,11 +104,11 @@ void Grid::bestFit() {
             Bin &b = bins[j];
             //if it can't fit, then break
             if(b.capacity < height * width) {
-              continue;
+                continue;
             }
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 && p1.second != -50){
+            if (p1.first != -50 && p1.second != -50) {
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
             }
@@ -117,7 +117,7 @@ void Grid::bestFit() {
 
     //check for space
     for (int i = 0; i < NUM_BINS; ++i) {
-        if (bins[i].is_empty()){
+        if (bins[i].is_empty()) {
             BFspace++;
         }
     }
