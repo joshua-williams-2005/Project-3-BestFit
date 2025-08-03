@@ -63,7 +63,6 @@ void Grid::emptyBins() {
 
 void Grid::firstFit() {
     cout << "First Fit" << endl;
-
     //iterate through every rectangle
     for (int i = 0; i < NUM_RECS; ++i) {
         int height = rectangles[i].first; //height of rectangle i
@@ -72,6 +71,9 @@ void Grid::firstFit() {
         //iterate through every bin, but break once inserted
         for (int j = 0; j < NUM_BINS; ++j) {
             Bin &b = bins[j];
+            if(b.capacity < height * width) {
+              continue;
+            }
             pair<int,int> p1 = b.canFit(height,width);
             if (p1.first != -50 || p1.second != -50){
                 b.placeRectangle(height,width,p1.first,p1.second);
@@ -79,7 +81,6 @@ void Grid::firstFit() {
             }
         }
     }
-
     //check for space
     for (int i = 0; i < NUM_BINS; ++i) {
         if (bins[i].is_empty()) {
@@ -99,7 +100,12 @@ void Grid::bestFit() {
 
         //iterate through every bin, but break once inserted
         for (int j = 0; j < NUM_BINS; ++j) {
+
             Bin &b = bins[j];
+            //if it can't fit, then break
+            if(b.capacity < height * width) {
+              continue;
+            }
             pair<int,int> p1;
             p1 = b.canFit(height,width);
             if (p1.first != -50 && p1.second != -50){

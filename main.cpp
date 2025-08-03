@@ -15,6 +15,7 @@ int main() {
     cout << "4. First-Fit vs Best-Fit" << endl;
     cout << "5. Exit" << endl;
     cout << "Please Select a Choice Above" << endl;
+
     while (userInput != "5") {
         std::getline(std::cin, userInput);
 
