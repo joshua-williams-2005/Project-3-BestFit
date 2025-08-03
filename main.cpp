@@ -3,11 +3,7 @@
 #include <string>
 #include <chrono>
 using namespace std;
-
-int main() {
-    Grid g;
-
-    std::string userInput;
+void printmenu(){
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate New Rectangles" << endl;
     cout << "2. Run First-Fit Decreasing" << endl;
@@ -15,14 +11,20 @@ int main() {
     cout << "4. First-Fit vs Best-Fit" << endl;
     cout << "5. Exit" << endl;
     cout << "Please Select a Choice Above" << endl;
+}
+int main() {
+    Grid g;
 
+    std::string userInput;
+    printmenu();
     while (userInput != "5") {
         std::getline(std::cin, userInput);
 
         if (userInput == "1") {
             cout<<"generate rectangles" << endl;
             g.createRectangles(); //reset vector of rectangles and generate 100,000 random rectangles
-            //g.printRectangles(); 
+            //g.printRectangles();
+            printmenu();
         }
         else if (userInput == "2") {
             cout<<"first-fit" << endl;
@@ -37,7 +39,7 @@ int main() {
             cout << "First Fit empty bins: " << space << endl;
             cout << "Time to run First Fit: " << time2.count() <<" seconds."<< endl;
             g.emptyBins();
-
+            printmenu();
         }
         else if (userInput == "3") {
             cout<<"best-fit" << endl;
@@ -51,6 +53,7 @@ int main() {
             cout << "Best Fit empty bins: " << space << endl;
             cout << "Time to run Best Fit: " << time2.count() <<" seconds."<< endl;
             g.emptyBins();
+            printmenu();
         }
         else if (userInput == "4") {
             int BFspace, FFspace;
@@ -92,7 +95,8 @@ int main() {
             else{ //equal space
                 cout << "Both algorithms use the same amount of time" << endl;
             }
-            
+            printmenu();
+
         }
         else if (userInput == "5") {
             cout<<"exit" << endl;
@@ -102,5 +106,4 @@ int main() {
         }
     }
 }
-
 
