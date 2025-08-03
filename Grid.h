@@ -5,8 +5,8 @@
 #include <vector>
 #include <random>
 using namespace std;
-const int NUM_RECS=100000;
-const int NUM_BINS=100000;
+const int NUM_RECS = 100000;
+const int NUM_BINS = 100000;
 class Grid {
 private:
     int FFspace;
