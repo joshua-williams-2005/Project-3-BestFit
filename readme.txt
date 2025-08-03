@@ -1,0 +1,1 @@
+After running main, enter the number corresponding to the onscreen prompts
