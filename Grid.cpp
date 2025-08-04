@@ -91,12 +91,13 @@ void Grid::firstFit() {
 
 void Grid::bestFit() {
     cout << "Best Fit" << endl;
-    sort(rectangles.begin(), rectangles.end(), [](auto& a, auto& b) {
+    auto newrecs = rectangles;
+    sort(newrecs.begin(), newrecs.end(), [](auto& a, auto& b) {
               return a.first * a.second > b.first * b.second;
           });
     for (int i = 0; i < NUM_RECS; ++i) {
-        int height = rectangles[i].first; //height of rectangle i
-        int width = rectangles[i].second; //width of rectangle i
+        int height = newrecs[i].first; //height of rectangle i
+        int width = newrecs[i].second; //width of rectangle i
 
         //iterate through every bin, but break once inserted
         for (int j = 0; j < NUM_BINS; ++j) {
@@ -108,7 +109,7 @@ void Grid::bestFit() {
             }
             pair<int,int> p1;
             p1 = b.canFit(height,width);
-            if (p1.first != -50 && p1.second != -50) {
+            if (p1.first != -50 && p1.second != -50){
                 b.placeRectangle(height,width,p1.first,p1.second);
                 break;
             }
