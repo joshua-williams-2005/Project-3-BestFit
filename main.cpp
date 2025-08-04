@@ -101,6 +101,7 @@ int main() {
         }
         else {
             cout<<"Please Enter a Number between 1 and 5" << endl;
+            printmenu();
         }
     }
 }
