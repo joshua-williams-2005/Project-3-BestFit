@@ -27,7 +27,7 @@ int main() {
             printmenu();
         }
         else if (userInput == "2") {
-            cout<<"First-Fit" << endl;
+            cout<<"First-Fit Running..." << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
             g.firstFit();
@@ -41,7 +41,7 @@ int main() {
             printmenu();
         }
         else if (userInput == "3") {
-            cout<<"Best-Fit" << endl;
+            cout<<"Best-Fit Running..." << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
             g.bestFit();
@@ -56,18 +56,21 @@ int main() {
         else if (userInput == "4") {
             int BFspace, FFspace;
             auto time0=chrono::system_clock::now();
+            cout<<"First-Fit Running..." << endl;
             g.firstFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> firstFitTime = time1 - time0;
             FFspace = g.getFFspace();
             g.emptyBins(); //resets BFspace and FFspace
             auto time2=chrono::system_clock::now();
+            cout<<"Best-Fit Running..." << endl;
             g.bestFit();
             auto time3=chrono::system_clock::now();
             std::chrono::duration<double> bestFitTime = time3 - time2;
             BFspace = g.getBFspace(); //resets BFspace and FFspace
             g.emptyBins();
             cout << "RESULTS" << endl;
+            cout << "- - - - - - - - -" << endl;
             cout << "First Fit empty bins: " << FFspace << endl;
             cout << "Best Fit empty bins: " << BFspace << endl;
             cout << "Time to run First Fit: " << firstFitTime.count() <<" seconds."<< endl;
