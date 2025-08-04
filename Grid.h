@@ -15,6 +15,7 @@ private:
     vector<Bin> bins;
     vector<pair<int, int> > rectangles;
 
+
 public:
     Grid();
     void createRectangles();

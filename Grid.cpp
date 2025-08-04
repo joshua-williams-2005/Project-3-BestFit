@@ -62,7 +62,7 @@ void Grid::emptyBins() {
 }
 
 void Grid::firstFit() {
-    cout << "First Fit" << endl;
+
     //iterate through every rectangle
     for (int i = 0; i < NUM_RECS; ++i) {
         int height = rectangles[i].first; //height of rectangle i
@@ -90,7 +90,7 @@ void Grid::firstFit() {
 }
 
 void Grid::bestFit() {
-    cout << "Best Fit" << endl;
+
     auto newrecs = rectangles;
     sort(newrecs.begin(), newrecs.end(), [](auto& a, auto& b) {
               return a.first * a.second > b.first * b.second;

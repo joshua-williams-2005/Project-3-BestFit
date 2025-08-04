@@ -6,8 +6,8 @@ using namespace std;
 void printmenu() {
     cout << "~~~~~~~~2D Rectangles Packing~~~~~~~~"<<endl;
     cout << "1. Generate New Rectangles" << endl;
-    cout << "2. Run First-Fit Decreasing" << endl;
-    cout << "3. Run Best-Fit Decreasing" << endl;
+    cout << "2. Run First-Fit" << endl;
+    cout << "3. Run Best-Fit" << endl;
     cout << "4. First-Fit vs Best-Fit" << endl;
     cout << "5. Exit" << endl;
     cout << "Please Select a Choice Above" << endl;
@@ -18,22 +18,21 @@ int main() {
     std::string userInput;
     printmenu();
     while (userInput != "5") {
+
         std::getline(std::cin, userInput);
 
         if (userInput == "1") {
-            cout<<"generate rectangles" << endl;
+            cout<<"Rectangles Generated" << endl;
             g.createRectangles(); //reset vector of rectangles and generate 100,000 random rectangles
-            //g.printRectangles();
             printmenu();
         }
         else if (userInput == "2") {
-            cout<<"first-fit" << endl;
+            cout<<"First-Fit" << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
             g.firstFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> time2 = time1 - time0;
-            //g.printBins();
             int space = g.getFFspace();
 
             cout << "First Fit empty bins: " << space << endl;
@@ -42,13 +41,12 @@ int main() {
             printmenu();
         }
         else if (userInput == "3") {
-            cout<<"best-fit" << endl;
+            cout<<"Best-Fit" << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
             g.bestFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> time2 = time1 - time0;
-            //g.printBins();
             int space = g.getBFspace();
             cout << "Best Fit empty bins: " << space << endl;
             cout << "Time to run Best Fit: " << time2.count() <<" seconds."<< endl;
@@ -61,14 +59,12 @@ int main() {
             g.firstFit();
             auto time1=chrono::system_clock::now();
             std::chrono::duration<double> firstFitTime = time1 - time0;
-            //g.printBins();
             FFspace = g.getFFspace();
             g.emptyBins(); //resets BFspace and FFspace
             auto time2=chrono::system_clock::now();
             g.bestFit();
             auto time3=chrono::system_clock::now();
             std::chrono::duration<double> bestFitTime = time3 - time2;
-            //g.printBins();
             BFspace = g.getBFspace(); //resets BFspace and FFspace
             g.emptyBins();
             cout << "RESULTS" << endl;
@@ -96,10 +92,9 @@ int main() {
                 cout << "Both algorithms use the same amount of time" << endl;
             }
             printmenu();
-
         }
         else if (userInput == "5") {
-            cout<<"exit" << endl;
+            cout<<"Exit" << endl;
         }
         else {
             cout<<"Please Enter a Number between 1 and 5" << endl;
