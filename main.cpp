@@ -23,11 +23,11 @@ int main() {
 
         if (userInput == "1") {
             cout<<"Rectangles Generated" << endl;
-            flag=true;
+            flag = true;
             g.createRectangles(); //reset vector of rectangles and generate 100,000 random rectangles
             printmenu();
         }
-        else if (userInput == "2" && flag == true) {
+        else if (userInput == "2" && flag) {
             cout<<"First-Fit Running..." << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
@@ -41,7 +41,7 @@ int main() {
             g.emptyBins();
             printmenu();
         }
-        else if (userInput == "3" && flag == true) {
+        else if (userInput == "3" && flag) {
             cout<<"Best-Fit Running..." << endl;
             //calculate time
             auto time0=chrono::system_clock::now();
@@ -54,7 +54,7 @@ int main() {
             g.emptyBins();
             printmenu();
         }
-        else if (userInput == "4" && flag == true) {
+        else if (userInput == "4" && flag) {
             int BFspace, FFspace;
             auto time0=chrono::system_clock::now();
             cout<<"First-Fit Running..." << endl;
@@ -100,7 +100,7 @@ int main() {
         else if (userInput == "5") {
             cout<<"Exit" << endl;
         }
-        else if (flag == false && (userInput == "2" || userInput == "3" || userInput == "4")){
+        else if (!flag && (userInput == "2" || userInput == "3" || userInput == "4")){
             cout<<"Please Generate Rectangles First" << endl;
             printmenu();
         }
